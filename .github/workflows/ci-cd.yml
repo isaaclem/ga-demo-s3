@@ -11,4 +11,19 @@ jobs:
     name: Build & Deploy
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.jobs
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+
+      - name: Install Dependencies
+        run: npm Install
+
+      - name: Run Tests
+        run: npm run test
+
+      - name: Build
+        run: npm run build
